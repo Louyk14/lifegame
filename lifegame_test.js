@@ -111,11 +111,11 @@ describe('life_map', function(){
 		});
 		it('should has 2 arguments', function(){
 			var temp_map = new life_map(4);
-			assert.equal(temp_map.init_map.length, 1);
+			assert.equal(temp_map.init_map.length, 2);
 		});
 		it('should fill the map with ceils', function(){
 			var temp_map = new life_map(3);
-			temp_map.init_map(9);
+			temp_map.init_map(9, true);
 			assert.equal(temp_map.map[0][0].get_status(), 1);
 		});
 	});
@@ -130,7 +130,7 @@ describe('life_map', function(){
 		});
 		it('should return some ceil status', function(){
 			var temp_map = new life_map(3);
-			temp_map.init_map(9);
+			temp_map.init_map(9, true);
 			assert.equal(temp_map.get_ceil_status(0, 0, temp_map.map), 1);
 		});
 	});
@@ -145,7 +145,7 @@ describe('life_map', function(){
 		});
 		it('should direct set some ceil status', function(){
 			var temp_map = new life_map(3);
-			temp_map.init_map(9);
+			temp_map.init_map(9, true);
 			temp_map.set_ceil_status(0, 0, 0);
 			assert.equal(temp_map.map[0][0].status, 0);
 		});
@@ -161,7 +161,7 @@ describe('life_map', function(){
 		});
 		it('should change some ceil status according to the status of 8 ceils around it', function(){
 			var temp_map = new life_map(3);
-			temp_map.init_map(0);
+			temp_map.init_map(0, true);
 			temp_map.set_ceil_status(0, 0, 1);
 			temp_map.set_ceil_status(0, 1, 1);
 			temp_map.set_ceil_status(1, 2, 1);
@@ -180,7 +180,7 @@ describe('life_map', function(){
 		});
 		it('should return the number of 1s around the ceil', function(){
 			var temp_map = new life_map(3);
-			temp_map.init_map(0);
+			temp_map.init_map(0, true);
 			temp_map.set_ceil_status(0, 0, 1);
 			temp_map.set_ceil_status(0, 1, 1);
 			temp_map.set_ceil_status(1, 2, 1);
@@ -194,7 +194,7 @@ describe('life_map', function(){
 		})
 		it('should set all ceils status in the map', function(){
 			var temp_map = new life_map(3);
-			temp_map.init_map(0);
+			temp_map.init_map(0, true);
 			temp_map.set_ceil_status(0, 0, 1);
 			temp_map.set_ceil_status(0, 1, 1);
 			temp_map.set_ceil_status(1, 2, 1);     //bug
@@ -264,6 +264,7 @@ describe('game_timer', function(){
 		assert.equal(game_timer.init.length, 3);
 	});
 	it('should finish init the map', function(){
+		game_timer.istest = true;
 		game_timer.init(3, 3, 100);
 		assert.equal(game_timer.mapsize, 3);
 		assert.equal(game_timer.live_num, 3);

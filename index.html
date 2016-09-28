@@ -1,24 +1,22 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-		<title>生命游戏</title>
-		<link rel="stylesheet" type="text/css" href="lifegame.css">
-	</head>	
-	<body>
-
-	</body>
-	<div id="settings">
-		<span>地图尺寸：</span>	
-		<br>
-		<input type="text" value="" id="size">
-		<br>
-		<span>初始活细胞数量：</span>
-		<br>
-		<input type="text" value="" id="livenum">
-		<br>
-		<input type="button" value="确认" id="submit">
-		<input type="button" value="暂停" id="pause">
-	</div>
-	<script src='lifegame.js'></script>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Test</title>
+	<link rel="stylesheet" href="./node_modules/mocha/mocha.css">
+</head>
+<body>
+	<div id="mocha"></div>
+	<script src="./node_modules/mocha/mocha.js"></script>
+	<script>mocha.setup('bdd');</script>
+	<script src="./node_modules/chai/chai.js"></script>
+	<script>
+		var assert = chai.assert;
+	</script>
+	<script src="lifegame.js"></script>
+	<script src="lifegame_test.js"></script>
+	<script>
+		mocha.run()
+	</script>
+</body>
 </html>
